@@ -2,6 +2,8 @@
 
 ## **Tech Stack**
 
+### <img height="25" src="https://www.typescriptlang.org/favicon-32x32.png"> | Typescript
+
 ### <img height="25" src="https://avatars.githubusercontent.com/u/22247014?s=200&v=4" /> | Yarn Berry
 
 ### <img height="25" src="https://avatars.githubusercontent.com/u/22632046?s=200&v=4"> | Storybook
