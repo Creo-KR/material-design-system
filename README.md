@@ -20,5 +20,5 @@
 
 ## **Documentation**
 
-- [Installation](./docs/installation.md)
-- [Reference](./docs/reference.md)
+- [Installation](./docs/Installation.md)
+- [Reference](./docs/Reference.md)
