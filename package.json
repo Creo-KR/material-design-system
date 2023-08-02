@@ -1,0 +1,19 @@
+{
+  "name": "@mds/monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "yarn@3.6.1",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@types/eslint": "latest",
+    "@types/prettier": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-plugin-prettier": "latest",
+    "prettier": "latest",
+    "typescript": "^5.1.6"
+  }
+}
