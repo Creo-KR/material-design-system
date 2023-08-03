@@ -1,7 +1,4 @@
 module.exports = {
-    "extends": [
-        "next",
-        "prettier"
-    ]
-    ,"plugins": ["prettier"], 
-}
+  extends: ["next", "prettier"],
+  plugins: ["prettier"],
+};
