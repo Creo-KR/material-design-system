@@ -26,14 +26,12 @@ yarn init -2
 {
   "folders": [
     {
-      "name": "monorepo",
-      "path": ".."
+      "name": "mds-monorepo",
+      "path": "."
     }
   ],
   "settings": {
-    "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true,
@@ -42,7 +40,11 @@ yarn init -2
     "files.eol": "\n"
   },
   "extensions": {
-    "recommendations": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
+    "recommendations": [
+      "arcanis.vscode-zipfs",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode"
+    ]
   }
 }
 ```
@@ -98,16 +100,20 @@ yarn add -D prettier@2.8.8 eslint-plugin-prettier@4.2.1
       "**/.yarn": true,
       "**/.pnp.*": true
     },
-    "eslint.nodePath": ".yarn/sdks",
-    "typescript.tsdk": ".yarn/sdks/typescript/lib",
-    "typescript.enablePromptUseWorkspaceTsdk": true
+    /* Workspace root folder name (mds-monorepo) */
+    "eslint.nodePath": "mds-monorepo/.yarn/sdks",
+    "typescript.tsdk": "mds-monorepo/.yarn/sdks/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "prettier.prettierPath": "../../.yarn/sdks/prettier/index.js"
   }
 }
 ```
 
+세팅 이후 `>TypeScript: Select Typescript Version` 명령 실행하고 `Use Workspace Version`
+
 ## PnP Prettier setting - .vscode/settings.json
 
-Root 설정을 위해서, packages 안에서는 ../../ 와 같이 상대 경로로 설정 해야한다.
+Root 설정을 위해서, packages 에서는 `"../../.yarn/sdks/prettier/index.js"` 와 같이 상대 경로로 설정 해야한다.
 
 ```json
 {
@@ -127,4 +133,44 @@ npx storybook@latest init
 
 # Install Storybook Dependencies
 yarn add -D webpack next
+```
+
+## Storybook - .storybook/tsconfig.json
+
+For main.ts, preview.ts
+
+```json
+{
+  "extends": "../tsconfig.json",
+  "references": [
+    {
+      "path": "../"
+    }
+  ],
+  "include": ["./*.ts*"]
+}
+```
+
+## Add Workspace Package (@mds/components) - mds.code-workspace
+
+```json
+{
+  "folders": [
+    {
+      "name": "mds-monorepo",
+      "path": "."
+    },
+    {
+      "name": "mds-components",
+      "path": "./packages/mds-components"
+    }
+  ]
+  /* ... */
+}
+```
+
+## Init Yarn Package - mds/packages/mds-components
+
+```bash
+yarn init -y
 ```
