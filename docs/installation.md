@@ -87,3 +87,30 @@ yarn dlx @yarnpkg/sdks vscode
 # prettier@3.0.0 버전과 yarn sdk가 호환이 잘 안된다.
 yarn add -D prettier@2.8.8 eslint-plugin-prettier@4.2.1
 ```
+
+## PnP setting - mds.code-workspace
+
+```json
+{
+  "settings": {
+    /* ... */
+    "search.exclude": {
+      "**/.yarn": true,
+      "**/.pnp.*": true
+    },
+    "eslint.nodePath": ".yarn/sdks",
+    "typescript.tsdk": ".yarn/sdks/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true
+  }
+}
+```
+
+## PnP Prettier setting - .vscode/settings.json
+
+Root 설정을 위해서, packages 안에서는 ../../ 와 같이 상대 경로로 설정 해야한다.
+
+```json
+{
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.js"
+}
+```
