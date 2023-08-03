@@ -114,3 +114,17 @@ Root 설정을 위해서, packages 안에서는 ../../ 와 같이 상대 경로�
   "prettier.prettierPath": ".yarn/sdks/prettier/index.js"
 }
 ```
+
+## Storybook
+
+```bash
+npx storybook@latest init
+#y
+#Webpack 5
+#y
+#nextjs
+#y
+
+# Install Storybook Dependencies
+yarn add -D webpack next
+```

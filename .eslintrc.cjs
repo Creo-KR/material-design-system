@@ -1,4 +1,4 @@
 module.exports = {
-  extends: ["next", "prettier"],
-  plugins: ["prettier"],
+  extends: ['next', 'prettier', 'plugin:storybook/recommended'],
+  plugins: ['prettier'],
 };

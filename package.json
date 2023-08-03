@@ -7,11 +7,31 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@storybook/addon-essentials": "7.2.1",
+    "@storybook/addon-interactions": "7.2.1",
+    "@storybook/addon-links": "7.2.1",
+    "@storybook/addon-onboarding": "1.0.8",
+    "@storybook/blocks": "7.2.1",
+    "@storybook/nextjs": "7.2.1",
+    "@storybook/react": "7.2.1",
+    "@storybook/testing-library": "0.2.0",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "eslint-config-prettier": "latest",
     "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-storybook": "^0.6.13",
+    "next": "^13.4.12",
     "prettier": "2.8.8",
-    "typescript": "^5.1.6"
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "storybook": "7.2.1",
+    "typescript": "^5.1.6",
+    "webpack": "^5.88.2"
+  },
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   }
 }
