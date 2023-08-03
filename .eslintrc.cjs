@@ -3,4 +3,5 @@ module.exports = {
         "next",
         "prettier"
     ]
+    ,"plugins": ["prettier"], 
 }

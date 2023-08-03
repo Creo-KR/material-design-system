@@ -6,17 +6,26 @@
     }
   ],
   "settings": {
-    "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true,
       "source.organizeImports": true
     },
-    "files.eol": "\n"
+    "files.eol": "\n",
+    "search.exclude": {
+      "**/.yarn": true,
+      "**/.pnp.*": true
+    },
+    "eslint.nodePath": ".yarn/sdks",
+    "typescript.tsdk": ".yarn/sdks/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true
   },
   "extensions": {
-    "recommendations": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
+    "recommendations": [
+      "arcanis.vscode-zipfs",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode"
+    ]
   }
 }

@@ -1,4 +1,12 @@
+# This line does two things:
+# - forces git to use LF
+# - tell git to guess whether files are text or binary
+*                       text=auto eol=lf
+
 /.yarn/**            linguist-vendored
 /.yarn/releases/*    binary
 /.yarn/plugins/**/*  binary
 /.pnp.*              binary linguist-generated
+
+/.vscode/*.json         linguist-language=JSON5
+/docs/**                linguist-documentation

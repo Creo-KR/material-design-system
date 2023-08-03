@@ -16,10 +16,8 @@ corepack prepare yarn@stable  --activate
 yarn set version latest
 # yarn initialize
 yarn init -2
-# PnP
-yarn config set nodeLinker node-modules
-# Install SDK(typescript, eslint, prettier)
-yarn dlx @yarnpkg/sdks vscode
+# PnP 사용 안할 시
+# yarn config set nodeLinker node-modules
 ```
 
 ## vscode workspace - mds.code-workspace
@@ -74,7 +72,6 @@ yarn tsc --init
 yarn plugin import typescript
 yarn plugin import workspace-tools
 yarn plugin import interactive-tools
-yarn dlx @yarnpkg/sdks vscode
 ```
 
 ## ESLint, Prettier
@@ -85,4 +82,8 @@ npm init @eslint/config -- --config next,prettier
 #yes
 #yarn
 
+# Install PnP SDK(typescript, eslint, prettier)
+yarn dlx @yarnpkg/sdks vscode
+# prettier@3.0.0 버전과 yarn sdk가 호환이 잘 안된다.
+yarn add -D prettier@2.8.8 eslint-plugin-prettier@4.2.1
 ```

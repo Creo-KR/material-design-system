@@ -7,13 +7,11 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@types/eslint": "latest",
-    "@types/prettier": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "eslint-config-prettier": "latest",
-    "eslint-plugin-prettier": "latest",
-    "prettier": "latest",
+    "eslint-plugin-prettier": "4.2.1",
+    "prettier": "2.8.8",
     "typescript": "^5.1.6"
   }
 }
