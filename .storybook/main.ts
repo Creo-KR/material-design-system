@@ -25,6 +25,18 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
+  babel: (config, options) => {
+    config.plugins = [...(config.plugins || []), '@emotion'];
+    config.presets = [
+      ...(config.presets || []),
+      [
+        '@babel/preset-react',
+        { runtime: 'automatic', importSource: '@emotion/react' },
+      ],
+    ];
+
+    return config;
+  },
 };
 
 export default config;

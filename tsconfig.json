@@ -6,6 +6,7 @@
     "target": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
@@ -17,6 +18,15 @@
     "importHelpers": true,
     "strict": true,
     "isolatedModules": true,
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@mds/components": ["./packages/mds-components/src/index"]
+    }
+  },
+  "references": [
+    {
+      "path": ["./packages/mds-components"]
+    }
+  ]
 }

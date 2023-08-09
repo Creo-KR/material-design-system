@@ -20,7 +20,7 @@ yarn init -2
 # yarn config set nodeLinker node-modules
 ```
 
-## vscode workspace - mds.code-workspace
+## vscode workspace - `mds.code-workspace`
 
 ```json
 {
@@ -49,7 +49,7 @@ yarn init -2
 }
 ```
 
-## yarn workspace - package.json
+## yarn workspace - `package.json`
 
 ```json
 {
@@ -90,7 +90,7 @@ yarn dlx @yarnpkg/sdks vscode
 yarn add -D prettier@2.8.8 eslint-plugin-prettier@4.2.1
 ```
 
-## PnP setting - mds.code-workspace
+## PnP setting - `mds.code-workspace`
 
 ```json
 {
@@ -111,15 +111,19 @@ yarn add -D prettier@2.8.8 eslint-plugin-prettier@4.2.1
 
 세팅 이후 `>TypeScript: Select Typescript Version` 명령 실행하고 `Use Workspace Version`
 
-## PnP Prettier setting - .vscode/settings.json
+## PnP Prettier setting - `.vscode/settings.json`
 
-Root 설정을 위해서, packages 에서는 `"../../.yarn/sdks/prettier/index.js"` 와 같이 상대 경로로 설정 해야한다.
+Root 설정을 위해서 아래와 같이 설정한다.
 
 ```json
 {
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.js"
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
 ```
+
+packages 에서는 `"../../.yarn/sdks/prettier/index.js"` 와 같이 상대 경로로 설정 해야한다.
 
 ## Storybook
 
@@ -135,7 +139,7 @@ npx storybook@latest init
 yarn add -D webpack next
 ```
 
-## Storybook - .storybook/tsconfig.json
+## Storybook - `.storybook/tsconfig.json`
 
 For main.ts, preview.ts
 
@@ -151,7 +155,7 @@ For main.ts, preview.ts
 }
 ```
 
-## Add Workspace Package (@mds/components) - mds.code-workspace
+## Add Workspace Package (@mds/components) - `mds.code-workspace`
 
 ```json
 {
@@ -169,8 +173,113 @@ For main.ts, preview.ts
 }
 ```
 
-## Init Yarn Package - mds/packages/mds-components
+## Init Yarn Package - `$ mds/packages/mds-components/`
 
 ```bash
 yarn init -y
+yarn add -D typescript
+```
+
+## Root tsconfig.json Setting - `mds/tsconfig.json`
+
+packages/mds-components/src/index.ts 파일을 메인으로 씀
+
+```json
+{
+  /* ... */
+  "compilerOptions": {
+    /* ... */
+    "baseUrl": ".",
+    "paths": {
+      "@mds/components": ["./packages/mds-components/src/index"]
+    }
+  },
+  "references": [
+    {
+      "path": ["./packages/mds-components"]
+    }
+  ]
+}
+```
+
+## Package tsconfig.json Setting - `mds/packages/mds-components/tsconfig.json`
+
+Root 의 설정을 그대로 가져가기 위해서
+
+```json
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "../../"
+  },
+  "references": [
+    {
+      "path": ["../../"]
+    }
+  ],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+}
+```
+
+## Install Emotion (CSS Prop) - `$ mds/`
+
+```bash
+yarn add -D @emotion/react
+yarn add -D @emotion/babel-plugin @babel/core @babel/preset-react
+```
+
+## Storybook Babel Setting - `mds/.storybook/main.ts`
+
+```ts
+const config: StorybookConfig = {
+  /* ... */
+  babel: (config, options) => {
+    config.plugins = [...(config.plugins || []), '@emotion'];
+    config.presets = [
+      ...(config.presets || []),
+      [
+        '@babel/preset-react',
+        { runtime: 'automatic', importSource: '@emotion/react' },
+      ],
+    ];
+
+    return config;
+  },
+};
+
+export default config;
+```
+
+## tsconfig.json Setting - `mds/tsconfig.json`
+
+```json
+{
+  /* ... */
+  "compilerOptions": {
+    /* ... */
+    "jsxImportSource": "@emotion/react"
+  }
+}
+```
+
+## Install Emotion in @mds/components - `$ mds/packages/mds-components/`
+
+```bash
+yarn add @emotion/react react react-dom
+yarn add -D @storybook/react @storybook/testing-library
+```
+
+## Example Storybook Source
+
+```ts
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { Button } from '@mds/components';
+
+export const Primary: StoryObj<Meta<typeof Button>> = {};
+
+export default {
+  title: 'Components/Button',
+  component: Button,
+} satisfies Meta<typeof Button>;
 ```
