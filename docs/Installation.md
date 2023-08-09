@@ -269,7 +269,7 @@ yarn add @emotion/react react react-dom
 yarn add -D @storybook/react @storybook/testing-library
 ```
 
-## Example Storybook Source
+## Example Storybook Source - `mds/packages/mds-components/src/components/button/Button.stories.ts`
 
 ```ts
 import type { Meta, StoryObj } from '@storybook/react';
