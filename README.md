@@ -24,3 +24,4 @@
 
 - [Installation](./docs/Installation.md)
 - [Reference](./docs/Reference.md)
+- [Figma - Material 3 Design Kit](https://www.figma.com/file/mZLpE9kl9nKIqjMZaPHRNM/Material-3-Design-Kit-(Community)?type=design&node-id=11%3A1833&mode=design&t=D7TYtQfq8qj5qwoz-1)
