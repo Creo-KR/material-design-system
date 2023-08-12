@@ -2298,7 +2298,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mds/components@workspace:*, @mds/components@workspace:packages/mds-components":
+"@mds/components@workspace:packages/mds-components":
   version: 0.0.0-use.local
   resolution: "@mds/components@workspace:packages/mds-components"
   dependencies:
@@ -2321,7 +2321,6 @@ __metadata:
     "@babel/preset-react": ^7.22.5
     "@emotion/babel-plugin": ^11.11.0
     "@emotion/react": ^11.11.1
-    "@mds/components": "workspace:*"
     "@storybook/addon-essentials": 7.2.1
     "@storybook/addon-interactions": 7.2.1
     "@storybook/addon-links": 7.2.1
