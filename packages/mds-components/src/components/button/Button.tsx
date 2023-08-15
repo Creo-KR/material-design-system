@@ -1,23 +1,12 @@
 'use client';
-import { css } from '@emotion/react';
-import { FC, ReactNode } from 'react';
+import { MDSC, createMDSComponent } from '../shared';
 
 export interface ButtonProps {
   enabled?: boolean;
-  children?: ReactNode;
 }
 
-const Button: FC<ButtonProps> = (props) => {
-  return (
-    <button
-      css={css`
-        width: 300px;
-        ${props.enabled ? 'height: 12px' : ''};
-      `}
-    >
-      {props.children}
-    </button>
-  );
+const Button: MDSC<'button', ButtonProps> = (props) => {
+  return createMDSComponent(props, 'button');
 };
 
 export default Button;
