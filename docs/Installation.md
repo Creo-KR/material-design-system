@@ -283,3 +283,59 @@ export default {
   component: Button,
 } satisfies Meta<typeof Button>;
 ```
+
+## Apply Emotion Global Style on Storybook - `$ mds/`
+
+```bash
+yarn add -D @storybook/addon-styling
+```
+
+## Apply Emotion Global Style on Storybook - `mds/.storybook/main.ts`
+
+```ts
+const config: StorybookConfig = {
+  /* ... */
+  addons: [
+    /* ... */
+    getAbsolutePath('@storybook/addon-styling'),
+  ],
+};
+```
+
+## Apply Emotion Global Style on Storybook - `mds/.storybook/preview.tsx`
+
+```tsx
+import { Global, ThemeProvider } from '@emotion/react';
+import { GlobalStyle, Themes } from '@mds/components';
+import { withThemeFromJSXProvider } from '@storybook/addon-styling';
+import type { Preview } from '@storybook/react';
+
+const preview: Preview = {
+  /* ... */
+  decorators: [
+    withThemeFromJSXProvider({
+      themes: Themes,
+      defaultTheme: 'light',
+      Provider: ThemeProvider,
+      GlobalStyles: () => <Global styles={GlobalStyle} />,
+    }),
+  ],
+};
+
+export default preview;
+```
+
+## Child Packages Dependencies Version - `mds/packages/mds-components/package.json`
+
+```json
+{
+  /* ... */
+  "dependencies": {
+    "any dependency": "*"
+    /* ... */
+  },
+  "devDependencies": {
+    "any dependency": "*"
+  }
+}
+```
