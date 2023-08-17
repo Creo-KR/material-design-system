@@ -8,10 +8,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Checkout storybook branch
         uses: actions/checkout@v3
         with:
           ref: storybook
+
       - name: Merge mainTEST
         run: git merge origin/main
 
