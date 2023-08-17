@@ -16,10 +16,9 @@ jobs:
         with:
           ref: storybook
 
-      - name: Merge mainTEST
+      - name: Merge main
         run: |
-          git pull origin main --allow-unrelated-histories
-          git merge origin/main
+          git pull origin main --allow-unrelated-histories --no-rebase
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
