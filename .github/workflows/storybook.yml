@@ -1,34 +1,34 @@
 name: Storybook Workflow
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
 
 jobs:
   build-and-deploy-storybook:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 20.5.0
-        
-    - name: Install dependencies
-      run: yarn install
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.5.0
 
-    - name: Rebase storybook branch
-      run: |
-        git checkout storybook
-        git rebase origin/main
-          
-    - name: Build Storybook
-      run: yarn build-storybook
+      - name: Install dependencies
+        run: yarn install
 
-    - name: Commit and push to storybook branch
-      run: |
-        git add .
-        git commit -m "Update Storybook build"
-        git push origin storybook
+      - name: Rebase storybook branch
+        run: |
+          /usr/bin/git checkout storybook
+          /usr/bin/git rebase origin/main
+
+      - name: Build Storybook
+        run: yarn build-storybook
+
+      - name: Commit and push to storybook branch
+        run: |
+          /usr/bin/git add .
+          /usr/bin/git commit -m "Update Storybook build"
+          /usr/bin/git push origin storybook
