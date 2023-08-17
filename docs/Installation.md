@@ -117,13 +117,11 @@ Root 설정을 위해서 아래와 같이 설정한다.
 
 ```json
 {
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
-  "typescript.tsdk": ".yarn/sdks/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.js"
 }
 ```
 
-packages 에서는 `"../../.yarn/sdks/prettier/index.js"` 와 같이 상대 경로로 설정 해야한다.
+packages 에서는 `"../../.yarn/sdks/prettier/index.js"` 와 같이 상대 경로로 설정 해야한다.(Workspace 설정)
 
 ## Storybook
 
@@ -308,12 +306,12 @@ const config: StorybookConfig = {
 import { Global, ThemeProvider } from '@emotion/react';
 import { GlobalStyle, Themes } from '@mds/components';
 import { withThemeFromJSXProvider } from '@storybook/addon-styling';
-import type { Preview } from '@storybook/react';
+import type { Preview, ReactRenderer } from '@storybook/react';
 
 const preview: Preview = {
   /* ... */
   decorators: [
-    withThemeFromJSXProvider({
+    withThemeFromJSXProvider<ReactRenderer>({
       themes: Themes,
       defaultTheme: 'light',
       Provider: ThemeProvider,

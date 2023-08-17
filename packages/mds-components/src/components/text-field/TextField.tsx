@@ -1,5 +1,5 @@
 'use client';
-import { MDSC, MDSCProps, createMDSComponent } from '../shared';
+import { MDSC, MDSCProps, MDSElement, createMDSComponent } from '../shared';
 import { withControllable } from '../shared/withControllable';
 
 export interface TextFieldProps {
@@ -7,14 +7,10 @@ export interface TextFieldProps {
   value?: string;
 }
 
-const TextField = <TTag extends 'input' | 'textarea' = 'input'>(
-  props: MDSCProps<TTag, TextFieldProps>
-) => {
-  const comp: MDSC<TTag, TextFieldProps> = (props) => {
-    return createMDSComponent(withControllable(props), 'input' as TTag);
-  };
-
-  return comp(props);
+const TextField: MDSC<'input' | 'textarea', TextFieldProps> = (props) => {
+  return createMDSComponent(withControllable(props), 'input');
 };
 
-export default TextField;
+export default TextField as <TTag extends 'input' | 'textarea' = 'input'>(
+  props: MDSCProps<TTag, TextFieldProps>
+) => MDSElement<TTag, TextFieldProps>;

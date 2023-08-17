@@ -1,7 +1,7 @@
 import { Global, ThemeProvider } from '@emotion/react';
 import { GlobalStyle, Themes } from '@mds/components';
 import { withThemeFromJSXProvider } from '@storybook/addon-styling';
-import type { Preview } from '@storybook/react';
+import type { Preview, ReactRenderer } from '@storybook/react';
 
 const preview: Preview = {
   parameters: {
@@ -14,7 +14,7 @@ const preview: Preview = {
     },
   },
   decorators: [
-    withThemeFromJSXProvider({
+    withThemeFromJSXProvider<ReactRenderer>({
       themes: Themes,
       defaultTheme: 'light',
       Provider: ThemeProvider,
