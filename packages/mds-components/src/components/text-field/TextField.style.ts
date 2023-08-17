@@ -4,6 +4,8 @@ import { TextFieldProps } from './TextField';
 
 type TextFieldType = NonNullable<TextFieldProps['type']>;
 
+const transitionDuration = '0.3s';
+
 const styles: ComponentStyle<string> = {
   textField: (theme) => css`
     .text-field__container {
@@ -37,10 +39,10 @@ const styles: ComponentStyle<string> = {
       background-color: ${theme.Color.sys.surface.container.highest};
 
       .text-field__label {
-        padding: 8px 0 8px 16px;
-        width: calc(100% - 16px);
+        padding: 8px 16px;
+        width: 100%;
         position: absolute;
-        transition: all 0.3s;
+        transition: all ${transitionDuration};
         ${theme.Typography.body.small};
         color: ${theme.Color.sys.surface.onVariant};
       }
@@ -59,7 +61,7 @@ const styles: ComponentStyle<string> = {
         ${theme.Typography.body.large};
         color: ${theme.Color.sys.surface.on};
         caret-color: ${theme.Color.sys.primary.color};
-        transition: caret-color 0.3s step-end;
+        transition: caret-color ${transitionDuration} step-end;
 
         ::placeholder {
           color: ${theme.Color.sys.surface.onVariant};
@@ -85,6 +87,7 @@ const styles: ComponentStyle<string> = {
 
       .text-field__input {
         caret-color: ${theme.Color.sys.surface.container.highest};
+        transition: none;
       }
     }
 
@@ -123,6 +126,7 @@ const styles: ComponentStyle<string> = {
 
     &.disabled {
       .text-field__container {
+        /* 0.38 * 0.4 = 0.095(18) */
         background-color: ${theme.Color.sys.surface.on}18;
         opacity: 0.38;
       }
