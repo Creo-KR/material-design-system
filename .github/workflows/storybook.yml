@@ -35,12 +35,12 @@ jobs:
       - name: Build Storybook
         run: yarn build-storybook
 
-      - name: Commit to storybook branch
+      - name: Push to storybook branch
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git switch storybook
-          git merge origin/main -m 'merge main into storybook'
           git add .
           git commit -m "Update Storybook build"
+          git switch storybook
+          git merge origin/main -m 'merge main into storybook'
           git push origin
