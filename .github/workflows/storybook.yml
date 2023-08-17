@@ -22,6 +22,11 @@ jobs:
           source: 'main'
           target: 'storybook'
 
+      - name: Checkout storybook branch
+        uses: actions/checkout@v3
+        with:
+          ref: storybook
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
