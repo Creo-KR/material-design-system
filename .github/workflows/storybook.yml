@@ -19,6 +19,7 @@ jobs:
           git config user.email github-actions@github.com
           git fetch origin main storybook
           git pull origin
+          git switch storybook
           git merge origin/main -m 'merge main into storybook'
 
       - name: Set up Node.js
