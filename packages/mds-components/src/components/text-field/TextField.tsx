@@ -7,6 +7,8 @@ import TextFieldStyle from './TextField.style';
 export interface TextFieldProps {
   type?: 'filled' | 'outlined';
   label?: ReactNode;
+  placeholder?: string;
+  disabled?: boolean;
   error?: boolean;
   value?: string;
 }
@@ -23,19 +25,12 @@ const TextField: MDSC<'input' | 'textarea', TextFieldProps> = ({
   const componentClassName = useMemo(() => {
     const classNames = ['text-field', className];
     focus && classNames.push('focus');
-    !value && !props.htmlProps?.placeholder && classNames.push('empty');
-    props.htmlProps?.disabled && classNames.push('disabled');
+    !value && !props.placeholder && classNames.push('empty');
+    props.disabled && classNames.push('disabled');
     props.error && classNames.push('error');
 
     return classNames.join(' ');
-  }, [
-    className,
-    focus,
-    value,
-    props.htmlProps?.placeholder,
-    props.htmlProps?.disabled,
-    props.error,
-  ]);
+  }, [className, focus, value, props.placeholder, props.disabled, props.error]);
 
   function handleFocus(
     e: FocusEvent<HTMLInputElement> & FocusEvent<HTMLTextAreaElement>

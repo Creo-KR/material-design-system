@@ -16,7 +16,7 @@ export function withControllable<TProps extends UseControllableProps = {}>(
     useState<HTMLAttributes<ControllableTag>['value']>();
 
   useEffect(() => {
-    setValue(props?.htmlProps?.value || props?.value);
+    setValue(props?.value || props?.htmlProps?.value);
   }, [props?.value, props?.htmlProps?.value]);
 
   return {
@@ -29,8 +29,8 @@ export function withControllable<TProps extends UseControllableProps = {}>(
           ChangeEvent<HTMLInputElement> &
           ChangeEvent<HTMLTextAreaElement>
       ) => {
-        props?.onChange?.(e);
         props?.htmlProps?.onChange?.(e);
+        props?.onChange?.(e);
         setValue(e.target.value);
       },
     },

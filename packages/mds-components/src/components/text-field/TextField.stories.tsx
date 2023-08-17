@@ -14,9 +14,10 @@ export default {
   component: TextField,
   args: {
     label: 'Label text',
-    htmlProps: {
-      placeholder: '',
-      disabled: false,
-    },
+    value: '',
+    placeholder: '',
+    disabled: false,
+    type: 'filled',
+    error: false,
   },
 } satisfies Meta<typeof TextField>;
