@@ -19,7 +19,8 @@ jobs:
       - name: Merge main
         uses: morbalint/git-merge-action@v1.1.0
         with:
-          target: main
+          source: 'main'
+          target: 'storybook'
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
