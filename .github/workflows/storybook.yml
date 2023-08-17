@@ -18,6 +18,8 @@ jobs:
 
       - name: Merge main
         run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git pull origin main --allow-unrelated-histories --no-rebase
 
       - name: Set up Node.js
@@ -42,8 +44,6 @@ jobs:
       - name: Commit and push to storybook branch
         uses: actions/checkout@v3
       - run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
           git add .
           git commit -m "Update Storybook build"
           git push origin storybook
