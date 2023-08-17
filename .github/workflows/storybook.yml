@@ -20,7 +20,7 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git mergin origin/main --allow-unrelated-histories
+          git merge origin/main --allow-unrelated-histories
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
