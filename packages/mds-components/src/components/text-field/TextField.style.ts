@@ -7,8 +7,8 @@ type TextFieldType = NonNullable<TextFieldProps['type']>;
 const styles: ComponentStyle<string> = {
   textField: (theme) => css`
     .text-field__container {
-      width: 210px;
-      height: 56px;
+      min-width: 210px;
+      min-height: 56px;
       position: relative;
       display: inline-flex;
       flex-direction: column;
@@ -16,6 +16,9 @@ const styles: ComponentStyle<string> = {
 
       .text-field__label {
         cursor: inherit;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .text-field__input {
@@ -31,27 +34,32 @@ const styles: ComponentStyle<string> = {
   filled: (theme) => css`
     .text-field__container {
       border-radius: 4px 4px 0 0;
-      padding: 8px 0 8px 16px;
       background-color: ${theme.Color.sys.surface.container.highest};
 
       .text-field__label {
+        padding: 8px 0 8px 16px;
+        width: calc(100% - 16px);
+        position: absolute;
         transition: all 0.3s;
         ${theme.Typography.body.small};
         color: ${theme.Color.sys.surface.onVariant};
       }
 
       .text-field__input {
-        position: absolute;
+        position: relative;
         width: 100%;
+        min-width: 100%;
         height: 100%;
+        min-height: 100%;
         left: 0;
-        bottom: 0;
-        padding: inherit;
+        top: 0;
+        padding: 8px 8px 8px 16px;
         border-radius: inherit;
         padding-top: 24px;
         ${theme.Typography.body.large};
         color: ${theme.Color.sys.surface.on};
-        caret-color: ${theme.Color.sys.primary.color};
+        caret-color: ${theme.Color.sys.surface.container.highest};
+        transition: caret-color 0.3s step-end;
 
         ::placeholder {
           color: ${theme.Color.sys.surface.onVariant};
@@ -100,6 +108,9 @@ const styles: ComponentStyle<string> = {
         }
         .text-field__label {
           color: ${theme.Color.sys.primary.color};
+        }
+        .text-field__input {
+          caret-color: ${theme.Color.sys.primary.color};
         }
 
         ::after {
