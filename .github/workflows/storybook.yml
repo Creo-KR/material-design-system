@@ -42,5 +42,5 @@ jobs:
           git add .
           git commit -m "Update Storybook build"
           git switch storybook
-          git rebase main -m 'rebase main into storybook'
+          git rebase main
           git push origin
