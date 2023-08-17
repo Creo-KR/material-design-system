@@ -11,6 +11,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Checkout storybook branch
+        uses: actions/checkout@v3
+        with:
+          ref: storybook
+          fetch-depth: 2
+      - run: git rebase main
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -31,7 +38,10 @@ jobs:
         run: yarn build-storybook
 
       - name: Commit and push to storybook branch
-        run: |
-          /usr/bin/git add .
-          /usr/bin/git commit -m "Update Storybook build"
-          /usr/bin/git push origin storybook
+        uses: actions/checkout@v3
+      - run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Update Storybook build"
+          git push origin storybook
