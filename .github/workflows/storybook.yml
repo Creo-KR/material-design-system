@@ -22,7 +22,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git rebase origin/main
-          git push origin
+          git push origin -f
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
