@@ -15,6 +15,10 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: '0'
+          ref: 'storybook'
+
+      - name: Rebase main to storybook
+        run: git rebase origin/main
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -32,8 +36,8 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Build Storybook
-        run: yarn build-storybook
+      # - name: Build Storybook
+      #   run: yarn build-storybook
 
       - name: Push to storybook branch
         run: |
@@ -41,6 +45,4 @@ jobs:
           git config user.email github-actions@github.com
           git add .
           git commit -m "Update Storybook build"
-          git switch storybook
-          git rebase main
           git push origin
