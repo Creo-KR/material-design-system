@@ -16,13 +16,21 @@ jobs:
         with:
           node-version: 20.5.0
 
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
         run: yarn install
 
       - name: Rebase storybook branch
         run: |
-          /usr/bin/git checkout storybook
-          /usr/bin/git rebase origin/main
+          /usr/bin/git checkout -B storybook refs/remotes/origin/storybook
+          /usr/bin/git rebase refs/remotes/origin/main
 
       - name: Build Storybook
         run: yarn build-storybook
