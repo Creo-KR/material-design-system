@@ -40,8 +40,8 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      # - name: Build Storybook
-      #   run: yarn build-storybook
+      - name: Build Storybook
+        run: yarn build-storybook
 
       - name: Push to storybook branch
         run: |
