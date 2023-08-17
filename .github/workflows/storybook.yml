@@ -27,11 +27,6 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Rebase storybook branch
-        run: |
-          /usr/bin/git checkout -B storybook origin/storybook
-          /usr/bin/git rebase origin/main
-
       - name: Build Storybook
         run: yarn build-storybook
 
