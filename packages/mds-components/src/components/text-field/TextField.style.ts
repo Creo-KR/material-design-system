@@ -53,12 +53,12 @@ const styles: ComponentStyle<string> = {
         min-height: 100%;
         left: 0;
         top: 0;
-        padding: 8px 8px 8px 16px;
+        padding: 8px 16px;
         border-radius: inherit;
         padding-top: 24px;
         ${theme.Typography.body.large};
         color: ${theme.Color.sys.surface.on};
-        caret-color: ${theme.Color.sys.surface.container.highest};
+        caret-color: ${theme.Color.sys.primary.color};
         transition: caret-color 0.3s step-end;
 
         ::placeholder {
@@ -81,6 +81,10 @@ const styles: ComponentStyle<string> = {
       .text-field__label {
         transform: translateY(8px);
         ${theme.Typography.body.large};
+      }
+
+      .text-field__input {
+        caret-color: ${theme.Color.sys.surface.container.highest};
       }
     }
 
@@ -108,9 +112,6 @@ const styles: ComponentStyle<string> = {
         }
         .text-field__label {
           color: ${theme.Color.sys.primary.color};
-        }
-        .text-field__input {
-          caret-color: ${theme.Color.sys.primary.color};
         }
 
         ::after {

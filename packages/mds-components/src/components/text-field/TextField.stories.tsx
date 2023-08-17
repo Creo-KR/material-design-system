@@ -13,6 +13,10 @@ export default {
   title: 'Components/TextField',
   component: TextField,
   args: {
-    label: 'Label',
+    label: 'Label text',
+    htmlProps: {
+      placeholder: '',
+      disabled: false,
+    },
   },
 } satisfies Meta<typeof TextField>;
