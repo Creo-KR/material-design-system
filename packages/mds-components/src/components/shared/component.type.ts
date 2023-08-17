@@ -20,7 +20,9 @@ export type MDSElement<TTag extends keyof ReactHTML, TProps> = ReturnType<
 export type MDSCProps<
   TTag extends keyof ReactHTML,
   TProps
-> = MaterialDesignSystemComponentProps<TTag, TProps> & TProps;
+> = MaterialDesignSystemComponentProps<TTag, TProps> & {
+  className?: string;
+} & TProps;
 
 interface MaterialDesignSystemComponentProps<
   TTag extends keyof ReactHTML,

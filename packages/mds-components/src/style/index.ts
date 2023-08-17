@@ -1,3 +1,4 @@
+import { Interpolation, Theme } from '@emotion/react';
 import { default as Color } from './color';
 import { default as Elevation } from './elevation';
 import { default as Typography } from './typography';
@@ -16,6 +17,11 @@ const DarkTheme = {
 };
 
 type MDSTheme = typeof LightTheme & typeof DarkTheme;
+
+export type ComponentStyle<TType extends string> = Record<
+  TType,
+  Interpolation<Theme>
+>;
 
 export const Themes = {
   light: LightTheme,

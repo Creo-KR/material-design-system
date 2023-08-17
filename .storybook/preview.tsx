@@ -3,6 +3,8 @@ import { GlobalStyle, Themes } from '@mds/components';
 import { withThemeFromJSXProvider } from '@storybook/addon-styling';
 import type { Preview, ReactRenderer } from '@storybook/react';
 
+const GlobalStyles = () => <Global styles={GlobalStyle} />;
+
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -18,7 +20,7 @@ const preview: Preview = {
       themes: Themes,
       defaultTheme: 'light',
       Provider: ThemeProvider,
-      GlobalStyles: () => <Global styles={GlobalStyle} />,
+      GlobalStyles,
     }),
   ],
 };

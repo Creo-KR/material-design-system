@@ -85,6 +85,12 @@ const ref = {
   },
 };
 
+const stateLayer = {
+  opacity8: '14',
+  opacity12: '1f',
+  opacity16: '29',
+};
+
 const lightSys = {
   primary: {
     color: ref.primary.primary40,
@@ -198,12 +204,14 @@ export default {
     white,
     black,
     ref,
+    stateLayer,
     sys: lightSys,
   },
   dark: {
     white,
     black,
     ref,
+    stateLayer,
     sys: darkSys,
   },
 };
