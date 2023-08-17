@@ -47,7 +47,4 @@ jobs:
           git config user.email github-actions@github.com
           git add .
           git commit -m "Update Storybook build"
-
-      - uses: morbalint/git-merge-action@v1.1.0
-        with:
-          target: 'storybook'
+          git push origin
