@@ -20,7 +20,7 @@ const TextField: MDSC<'input' | 'textarea', TextFieldProps> = ({
   label,
   ...props
 }) => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(props.value);
   const [focus, setFocus] = useState(false);
   const componentClassName = useMemo(() => {
     const classNames = ['text-field', className];
@@ -49,12 +49,12 @@ const TextField: MDSC<'input' | 'textarea', TextFieldProps> = ({
   function handleChange(
     e: ChangeEvent<HTMLInputElement> & ChangeEvent<HTMLTextAreaElement>
   ) {
-    props.htmlProps?.onChange?.(e);
     setValue(e.target.value);
   }
 
   const inputProps = {
     ...props,
+    value,
     className: 'text-field__input',
     onFocus: handleFocus,
     onBlur: handleBlur,

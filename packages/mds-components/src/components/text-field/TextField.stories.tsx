@@ -19,5 +19,8 @@ export default {
     disabled: false,
     type: 'filled',
     error: false,
+    htmlProps: {
+      onChange: (e: any) => {},
+    },
   },
 } satisfies Meta<typeof TextField>;
