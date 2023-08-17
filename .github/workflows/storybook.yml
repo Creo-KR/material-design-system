@@ -29,8 +29,8 @@ jobs:
 
       - name: Rebase storybook branch
         run: |
-          /usr/bin/git checkout -B storybook refs/remotes/origin/storybook
-          /usr/bin/git rebase refs/remotes/origin/main
+          /usr/bin/git checkout -B storybook origin/storybook
+          /usr/bin/git rebase origin/main
 
       - name: Build Storybook
         run: yarn build-storybook
