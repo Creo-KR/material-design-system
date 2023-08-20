@@ -19,6 +19,7 @@ export interface TextFieldProps {
   error?: boolean;
   value?: string;
   supportingText?: ReactNode;
+  characterCount?: boolean;
 }
 
 const TextField: MDSC<'input' | 'textarea', TextFieldProps> = ({
@@ -57,6 +58,12 @@ const TextField: MDSC<'input' | 'textarea', TextFieldProps> = ({
   function handleChange(
     e: ChangeEvent<HTMLInputElement> & ChangeEvent<HTMLTextAreaElement>
   ) {
+    if (
+      props.htmlProps?.maxLength &&
+      e.currentTarget.value.length > props.htmlProps?.maxLength
+    ) {
+      return;
+    }
     setValue(e.target.value);
   }
 
@@ -71,7 +78,7 @@ const TextField: MDSC<'input' | 'textarea', TextFieldProps> = ({
     onFocus: handleFocus,
     onBlur: handleBlur,
     onChange: handleChange,
-  };
+  } as MDSCProps<'input' | 'textarea', TextFieldProps>;
 
   return (
     <div className={componentClassName} css={[TextFieldStyle[type], css]}>
@@ -79,15 +86,26 @@ const TextField: MDSC<'input' | 'textarea', TextFieldProps> = ({
         {label && <label className="text-field__label">{label}</label>}
         {createMDSComponent(withControllable(inputProps), 'input')}
       </div>
-      {props.supportingText && (
-        <div className="text-field__supporting-text">
-          {props.supportingText}
+      {(props.supportingText || props.characterCount) && (
+        <div className="text-field__supporting-container">
+          {props.supportingText && (
+            <div className="text-field__supporting-text">
+              {props.supportingText}
+            </div>
+          )}
+          {props.characterCount && (
+            <div className="text-field__character-count">
+              {(value?.length || 0).toLocaleString()}
+              {props.htmlProps?.maxLength && (
+                <span>/{props.htmlProps?.maxLength.toLocaleString()}</span>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>
   );
 };
-TextField.displayName = TextField.name;
 
 export default TextField as <TTag extends 'input' | 'textarea' = 'input'>(
   props: MDSCProps<TTag, TextFieldProps>

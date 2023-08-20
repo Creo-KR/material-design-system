@@ -20,7 +20,9 @@ export default {
     type: 'filled',
     error: false,
     supportingText: '',
+    characterCount: false,
     htmlProps: {
+      maxLength: 20,
       onChange: (e: any) => {},
     },
   },

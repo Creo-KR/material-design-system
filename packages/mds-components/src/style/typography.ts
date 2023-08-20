@@ -113,7 +113,7 @@ export default {
       font-style: normal;
       font-weight: 400;
       line-height: 16px;
-      letter-spacing: 0.4;
+      letter-spacing: 0.4px;
     `,
   },
 };

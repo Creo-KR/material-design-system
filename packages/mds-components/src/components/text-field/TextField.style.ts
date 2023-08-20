@@ -34,19 +34,27 @@ const styles: ComponentStyle<string> = {
         }
       }
     }
-    .text-field__supporting-text {
+    .text-field__supporting-container {
+      display: flex;
       width: 100%;
       padding: 4px 16px 0;
       color: ${theme.Color.sys.surface.onVariant};
-      ${theme.Typography.body.small}
+      ${theme.Typography.body.small};
+      justify-content: end;
+      .text-field__supporting-text {
+        flex-grow: 1;
+        &:not(:last-child) {
+          margin-right: 16px;
+        }
+      }
     }
     &.error {
-      .text-field__supporting-text {
+      .text-field__supporting-container {
         color: ${theme.Color.sys.error.color};
       }
     }
     &.disabled {
-      .text-field__supporting-text {
+      .text-field__supporting-container {
         color: ${theme.Color.sys.surface.on};
         opacity: 0.38;
       }
@@ -111,8 +119,8 @@ const styles: ComponentStyle<string> = {
       }
     }
 
-    &:hover:not(.focus):not(.disabled) {
-      .text-field__container {
+    &:not(.focus):not(.disabled) {
+      .text-field__container:hover {
         ::before {
           content: '';
           position: absolute;
@@ -127,7 +135,7 @@ const styles: ComponentStyle<string> = {
         }
       }
       &.error {
-        .text-field__container {
+        .text-field__container:hover {
           .text-field__label {
             color: ${theme.Color.sys.error.onContainer};
           }
