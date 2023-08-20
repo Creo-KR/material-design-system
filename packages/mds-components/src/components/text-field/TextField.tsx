@@ -1,5 +1,12 @@
 'use client';
-import { ChangeEvent, FocusEvent, ReactNode, useMemo, useState } from 'react';
+import {
+  ChangeEvent,
+  FocusEvent,
+  ReactNode,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { MDSC, MDSCProps, MDSElement, createMDSComponent } from '../shared';
 import { withControllable } from '../shared/withControllable';
 import TextFieldStyle from './TextField.style';
@@ -11,6 +18,7 @@ export interface TextFieldProps {
   disabled?: boolean;
   error?: boolean;
   value?: string;
+  supportingText?: ReactNode;
 }
 
 const TextField: MDSC<'input' | 'textarea', TextFieldProps> = ({
@@ -52,6 +60,10 @@ const TextField: MDSC<'input' | 'textarea', TextFieldProps> = ({
     setValue(e.target.value);
   }
 
+  useEffect(() => {
+    setValue(props.value);
+  }, [props.value]);
+
   const inputProps = {
     ...props,
     value,
@@ -67,6 +79,11 @@ const TextField: MDSC<'input' | 'textarea', TextFieldProps> = ({
         {label && <label className="text-field__label">{label}</label>}
         {createMDSComponent(withControllable(inputProps), 'input')}
       </div>
+      {props.supportingText && (
+        <div className="text-field__supporting-text">
+          {props.supportingText}
+        </div>
+      )}
     </div>
   );
 };

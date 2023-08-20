@@ -8,6 +8,8 @@ const transitionDuration = '0.3s';
 
 const styles: ComponentStyle<string> = {
   textField: (theme) => css`
+    display: flex;
+    flex-direction: column;
     .text-field__container {
       min-width: 210px;
       min-height: 56px;
@@ -32,6 +34,23 @@ const styles: ComponentStyle<string> = {
         }
       }
     }
+    .text-field__supporting-text {
+      width: 100%;
+      padding: 4px 16px 0;
+      color: ${theme.Color.sys.surface.onVariant};
+      ${theme.Typography.body.small}
+    }
+    &.error {
+      .text-field__supporting-text {
+        color: ${theme.Color.sys.error.color};
+      }
+    }
+    &.disabled {
+      .text-field__supporting-text {
+        color: ${theme.Color.sys.surface.on};
+        opacity: 0.38;
+      }
+    }
   `,
   filled: (theme) => css`
     .text-field__container {
@@ -42,7 +61,8 @@ const styles: ComponentStyle<string> = {
         padding: 8px 16px;
         width: 100%;
         position: absolute;
-        transition: all ${transitionDuration};
+        transition-duration: ${transitionDuration};
+        transition-property: transform, font-size;
         ${theme.Typography.body.small};
         color: ${theme.Color.sys.surface.onVariant};
       }
@@ -106,6 +126,17 @@ const styles: ComponentStyle<string> = {
           background-color: ${theme.Color.sys.surface.on};
         }
       }
+      &.error {
+        .text-field__container {
+          .text-field__label {
+            color: ${theme.Color.sys.error.onContainer};
+          }
+
+          ::after {
+            background-color: ${theme.Color.sys.error.onContainer};
+          }
+        }
+      }
     }
 
     &.focus {
@@ -120,6 +151,21 @@ const styles: ComponentStyle<string> = {
         ::after {
           height: 2px;
           background-color: ${theme.Color.sys.primary.color};
+        }
+      }
+    }
+
+    &.error {
+      .text-field__container {
+        .text-field__label {
+          color: ${theme.Color.sys.error.color};
+        }
+        .text-field__input {
+          caret-color: ${theme.Color.sys.error.color};
+        }
+
+        ::after {
+          background-color: ${theme.Color.sys.error.color};
         }
       }
     }

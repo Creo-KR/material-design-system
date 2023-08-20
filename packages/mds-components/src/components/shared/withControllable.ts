@@ -14,8 +14,10 @@ export function withControllable<TProps extends UseControllableProps = {}>(
 ): TProps {
   const [value, setValue] =
     useState<HTMLAttributes<ControllableTag>['value']>();
+  console.log('init', props?.value);
 
   useEffect(() => {
+    console.log('effect', props?.value);
     setValue(props?.value || props?.htmlProps?.value);
   }, [props?.value, props?.htmlProps?.value]);
 

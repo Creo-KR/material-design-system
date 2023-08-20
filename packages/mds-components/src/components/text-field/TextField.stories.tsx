@@ -19,6 +19,7 @@ export default {
     disabled: false,
     type: 'filled',
     error: false,
+    supportingText: '',
     htmlProps: {
       onChange: (e: any) => {},
     },
