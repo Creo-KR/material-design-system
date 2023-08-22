@@ -1,31 +1,32 @@
 import { Interpolation, Theme } from '@emotion/react';
-import { DetailedHTMLProps, FC, ReactHTML, RefAttributes } from 'react';
+import { DetailedHTMLProps, FC, RefAttributes } from 'react';
 
 /**
  * Material Design System Component
  */
-export interface MDSC<TTag extends keyof ReactHTML, TProps>
+export interface MDSC<TTag extends keyof JSX.IntrinsicElements, TProps>
   extends FC<MDSCProps<TTag, TProps>> {}
 
 /**
  * Material Design System Element
  */
-export type MDSElement<TTag extends keyof ReactHTML, TProps> = ReturnType<
-  MDSC<TTag, TProps>
->;
+export type MDSElement<
+  TTag extends keyof JSX.IntrinsicElements,
+  TProps
+> = ReturnType<MDSC<TTag, TProps>>;
 
 /**
  * Material Design System Component Properties
  */
 export type MDSCProps<
-  TTag extends keyof ReactHTML,
+  TTag extends keyof JSX.IntrinsicElements,
   TProps
 > = MaterialDesignSystemComponentProps<TTag, TProps> & {
   className?: string;
 } & TProps;
 
 interface MaterialDesignSystemComponentProps<
-  TTag extends keyof ReactHTML,
+  TTag extends keyof JSX.IntrinsicElements,
   TProps
 > extends WithCSSProp {
   as?: TTag;

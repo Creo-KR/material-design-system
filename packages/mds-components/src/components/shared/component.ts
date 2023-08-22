@@ -1,8 +1,10 @@
 import { jsx } from '@emotion/react';
-import { ReactHTML } from 'react';
 import { MDSCProps, MDSElement } from './component.type';
 
-export function createMDSComponent<TTag extends keyof ReactHTML, P = {}>(
+export function createMDSComponent<
+  TTag extends keyof JSX.IntrinsicElements,
+  P = {}
+>(
   { as, htmlProps, ...props }: MDSCProps<TTag, P>,
   defaultTag: TTag
 ): MDSElement<TTag, P> {

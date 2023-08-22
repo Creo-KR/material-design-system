@@ -7,6 +7,7 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { IconButton, IconButtonProps } from '../icon-button';
 import { MDSC, MDSCProps, MDSElement, createMDSComponent } from '../shared';
 import { withControllable } from '../shared/withControllable';
 import TextFieldStyle from './TextField.style';
@@ -18,6 +19,8 @@ export interface TextFieldProps {
   disabled?: boolean;
   error?: boolean;
   value?: string;
+  leadingIconProps?: IconButtonProps;
+  trailingIconProps?: IconButtonProps;
   supportingText?: ReactNode;
   characterCount?: boolean;
 }
@@ -83,8 +86,12 @@ const TextField: MDSC<'input' | 'textarea', TextFieldProps> = ({
   return (
     <div className={componentClassName} css={[TextFieldStyle[type], css]}>
       <div className="text-field__container">
-        {label && <label className="text-field__label">{label}</label>}
-        {createMDSComponent(withControllable(inputProps), 'input')}
+        {props.leadingIconProps && <IconButton {...props.leadingIconProps} />}
+        <div className="text-field__label-container">
+          {label && <label className="text-field__label">{label}</label>}
+          {createMDSComponent(withControllable(inputProps), 'input')}
+        </div>
+        {props.trailingIconProps && <IconButton {...props.trailingIconProps} />}
       </div>
       {(props.supportingText || props.characterCount) && (
         <div className="text-field__supporting-container">

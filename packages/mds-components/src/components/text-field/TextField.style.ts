@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { ComponentStyle } from '../../style';
+import { ComponentStyle } from '../../styles';
 import { TextFieldProps } from './TextField';
 
 type TextFieldType = NonNullable<TextFieldProps['type']>;
@@ -8,29 +8,33 @@ const transitionDuration = '0.3s';
 
 const styles: ComponentStyle<string> = {
   textField: (theme) => css`
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     .text-field__container {
       min-width: 210px;
       min-height: 56px;
       position: relative;
-      display: inline-flex;
-      flex-direction: column;
+      display: flex;
+      align-items: center;
       cursor: text;
 
-      .text-field__label {
-        cursor: inherit;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+      .text-field__label-container {
+        display: flex;
+        flex-direction: column;
+        .text-field__label {
+          cursor: inherit;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
 
-      .text-field__input {
-        background-color: transparent;
-        border: 0;
+        .text-field__input {
+          background-color: transparent;
+          border: 0;
 
-        :focus-visible {
-          outline: 0;
+          :focus-visible {
+            outline: 0;
+          }
         }
       }
     }

@@ -6,6 +6,11 @@ import type { Preview, ReactRenderer } from '@storybook/react';
 const GlobalStyles = () => <Global styles={GlobalStyle} />;
 
 const preview: Preview = {
+  argTypes: {
+    css: {
+      type: 'string',
+    },
+  },
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
