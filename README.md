@@ -25,4 +25,4 @@
 - [Installation](./docs/Installation.md)
 - [Reference](./docs/Reference.md)
 - [Figma - Material 3 Design Kit](<https://www.figma.com/file/iRIcVXTFDBVyouPoZUuR20/Material-3-Design-Kit-(Community)>)
-- [Static Storybook](https://creo-kr.github.io/material-design-system//storybook-static/)
+- [Static Storybook](https://creo-kr.github.io/material-design-system/storybook-static/)
